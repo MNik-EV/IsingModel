@@ -7,14 +7,15 @@
 
 A research-grade implementation of the 2D square-lattice Ising model. The Python backend delivers fast Monte Carlo sweeps with Numba, plots thermodynamic observables, and emits reproducible data products. The `docs/` folder ships a modern, dark-themed web lab for interactive exploration (live at the badge above).
 
-<a href="https://MNik-EV.github.io/IsingModel/">
-  <img alt="Live Ising Lab preview" src="results/snapshots.png" width="420">
-</a>
-
-![Thermodynamics](results/thermodynamics.png)
+<div align="center">
+  <a href="https://MNik-EV.github.io/IsingModel/">
+    <img alt="Live Ising Lab preview" src="results/snapshots.png" width="900">
+  </a>
+  <img alt="Thermodynamics" src="results/thermodynamics.png" width="900">
+</div>
 
 <details>
-  <summary>Inline live lab (works in Markdown viewers that allow iframes)</summary>
+  <summary>Inline live lab (works in Markdown viewers that allow iframes; GitHub blocks it)</summary>
 
 <iframe src="https://MNik-EV.github.io/IsingModel/" width="100%" height="520" style="border:1px solid #e5e7eb;border-radius:8px;">
 </iframe>
