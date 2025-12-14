@@ -9,7 +9,10 @@ A research-grade implementation of the 2D square-lattice Ising model. The Python
 
 <div align="center">
   <a href="https://MNik-EV.github.io/IsingModel/">
-    <img alt="Live Ising Lab preview" src="results/snapshots.png" width="900">
+    <img alt="Live Ising Lab preview" src="docs/preview.gif" width="900">
+  </a>
+  <a href="https://MNik-EV.github.io/IsingModel/">
+    <img alt="Lattice snapshots" src="results/snapshots.png" width="900">
   </a>
   <img alt="Thermodynamics" src="results/thermodynamics.png" width="900">
 </div>
