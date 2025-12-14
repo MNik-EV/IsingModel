@@ -3,12 +3,17 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)
 ![Numba](https://img.shields.io/badge/accelerated-numba-brightgreen.svg)
+[![Live Demo](https://img.shields.io/badge/Live%20Lab-GitHub%20Pages-22d3ee)](https://MNik-EV.github.io/IsingModel/)
 
-A research-grade implementation of the 2D square-lattice Ising model. The Python backend delivers fast Monte Carlo sweeps with Numba, plots thermodynamic observables, and emits reproducible data products. The `docs/` folder ships a modern, dark-themed web lab for interactive exploration.
+A research-grade implementation of the 2D square-lattice Ising model. The Python backend delivers fast Monte Carlo sweeps with Numba, plots thermodynamic observables, and emits reproducible data products. The `docs/` folder ships a modern, dark-themed web lab for interactive exploration (live at the badge above).
+
+<a href="https://MNik-EV.github.io/IsingModel/">
+  <img alt="Live Ising Lab preview" src="results/snapshots.png" width="420">
+</a>
 
 ## Model & Method
 
-Hamiltonian (ferromagnetic, \(J=1\)) with periodic boundary conditions:
+Hamiltonian (ferromagnetic, $J=1$) with periodic boundary conditions:
 
 $$
 H(\sigma) = -\sum_{\langle i, j \rangle} s_i s_j , \qquad s_i \in \{-1, +1\}
@@ -20,13 +25,13 @@ $$
 P(\Delta E) = \min \left(1, e^{-\beta \Delta E}\right), \quad \beta = 1/T
 $$
 
-We measure energy density, \(\langle |M| \rangle / N\), specific heat \(C_v\), and susceptibility \(\chi\) across a temperature sweep that captures the Onsager critical point \(T_c \approx 2.269\).
+We measure energy density, $\langle E \rangle / N$, magnetization $\langle |M| \rangle / N$, specific heat $C_v$, and susceptibility $\chi$ across a temperature sweep that captures the Onsager critical point $T_c \approx 2.269$.
 
 ## Features
 - Numba-accelerated sweeps with energy/magnetization updated incrementally (no full-lattice recomputation per step).
 - Tunable lattice size, temperature grid, equilibration, and RNG seed via CLI.
 - Publication-ready Matplotlib figures plus persisted `observables.npz` for downstream analysis.
-- Lattice snapshots (low, critical, high \(T\)).
+- Lattice snapshots (low, critical, high $T$).
 - Modern WebGL-free frontend (Chart.js + Canvas) with live magnetization/energy and acceptance tracking.
 
 ## Quickstart (Python backend)
@@ -44,12 +49,12 @@ python main.py --size 96 --points 90 --steps 4000 --equil 2000 --skip-snapshots
 ```
 
 Outputs (written to `results/`):
-- `thermodynamics.png` — energy, magnetization (with Onsager curve), \(C_v\), and \(\chi\) vs. \(T\).
-- `snapshots.png` — representative equilibrated lattices at \(T<T_c\), \(T \approx T_c\), and \(T>T_c\).
+- `thermodynamics.png` — energy, magnetization (with Onsager curve), $C_v$, and $\chi$ vs. $T$.
+- `snapshots.png` — representative equilibrated lattices at $T<T_c$, $T \approx T_c$, and $T>T_c$.
 - `observables.npz` — NumPy archive containing raw arrays (`temps`, `energy`, `magnetization`, `specific_heat`, `susceptibility`, `acceptance`).
 
 Key CLI flags:
-- `--size` linear lattice size \(L\) (default 64).
+- `--size` linear lattice size $L$ (default 64).
 - `--steps` recorded Monte Carlo sweeps per temperature.
 - `--equil` burn-in sweeps before sampling.
 - `--tmin`, `--tmax`, `--points` temperature sweep definition.
@@ -64,13 +69,13 @@ python -m http.server 8000 --directory docs
 # then browse to http://localhost:8000
 ```
 
-Controls include temperature, sweeps-per-frame, live energy / |magnetization| per spin, and acceptance ratio. The canvas renders a 128×128 lattice using the same Metropolis update rule as the backend.
+Controls include temperature, sweeps-per-frame, live energy / |magnetization| per spin, and acceptance ratio. The canvas renders a 128×128 lattice using the same Metropolis update rule as the backend. The deployed version lives at https://MNik-EV.github.io/IsingModel/.
 
 ## Implementation Notes
-- Metropolis sweep proposes \(N^2\) flips per sweep; energy and magnetization are updated incrementally using \(\Delta E = 2 s_i \sum_{\text{nn}} s_j\).
+- Metropolis sweep proposes $N^2$ flips per sweep; energy and magnetization are updated incrementally using $\Delta E = 2 s_i \sum_{\text{nn}} s_j$.
 - Specific heat and susceptibility are computed from fluctuations of the **total** energy and magnetization, then normalized per spin:  
-  \(C_v = (\langle E^2 \rangle - \langle E \rangle^2)/(N T^2)\),  
-  \(\chi = (\langle M^2 \rangle - \langle M \rangle^2)/(N T)\).
+  $C_v = (\langle E^2 \rangle - \langle E \rangle^2)/(N T^2)$,  
+  $\chi = (\langle M^2 \rangle - \langle M \rangle^2)/(N T)$.
 - Periodic boundary conditions are enforced for both backend and frontend engines.
 
 ## Citing / Referencing
