@@ -11,6 +11,16 @@ A research-grade implementation of the 2D square-lattice Ising model. The Python
   <img alt="Live Ising Lab preview" src="results/snapshots.png" width="420">
 </a>
 
+![Thermodynamics](results/thermodynamics.png)
+
+<details>
+  <summary>Inline live lab (works in Markdown viewers that allow iframes)</summary>
+
+<iframe src="https://MNik-EV.github.io/IsingModel/" width="100%" height="520" style="border:1px solid #e5e7eb;border-radius:8px;">
+</iframe>
+
+</details>
+
 ## Model & Method
 
 Hamiltonian (ferromagnetic, $J=1$) with periodic boundary conditions:

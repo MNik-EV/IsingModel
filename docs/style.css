@@ -259,6 +259,22 @@ input[type="range"] {
     text-decoration: none;
 }
 
+.media-grid {
+    margin-top: 16px;
+}
+
+.media-card {
+    padding: 12px;
+}
+
+.media-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
 @media (max-width: 1024px) {
     .layout {
         grid-template-columns: 1fr;
